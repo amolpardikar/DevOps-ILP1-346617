@@ -16,7 +16,7 @@
 		<servlet-class>com.mywebdemo.ProcessLogin</servlet-class>
 		<init-param>
          <param-name>password</param-name>
-         <param-value>patel</param-value>
+         <param-value>test</param-value>
      </init-param>
 	</servlet>
 

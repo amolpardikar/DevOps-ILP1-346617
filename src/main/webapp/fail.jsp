@@ -5,14 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Fail</title>
 </head>
-<body bgcolor="pink">
+<body bgcolor="silver">
  
-<% out.print("welcome to fail.jsp ..." + request.getAttribute("dname"));%>
+<% out.print("welcome to fail.jsp, " + request.getAttribute("dname"));%>
 
 	<h1>
-	<br> Sorry either user Name and/or password is wrong..<br> 
+	<br> Sorry either user Name and/or password is wrong..<br> 	 
 	</h1>
+	<a href='index.jsp'>Go to login page</a>
 </body>
 </html>

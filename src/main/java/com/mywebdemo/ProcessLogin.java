@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ProcessLogin
  * mvn archetype:generate 
--DgroupId=com.patel.mywebdemo 
+-DgroupId=com.mywebdemo 
 -DartifactId=MyMavenWebAppDemo
 -DarchetypeArtifactId=maven-archetype-webapp 
 -DinteractiveMode=false
@@ -40,42 +40,25 @@ public class ProcessLogin extends HttpServlet {
     {
     	// Always call super.init(config) first  (servlet mantra #1)
         super.init(config);
-        System.out.println("In the init##############");
         
         // Try to load the initial count from our saved persistent state
         try {
-        	 System.out.println("Here 1");
           FileReader fileReader = new FileReader("InitPassword.password");
-          System.out.println("Here 2");
           BufferedReader bufferedReader = new BufferedReader(fileReader);
-          System.out.println("Here 3");
           passwd = bufferedReader.readLine();
-          //count = Integer.parseInt(initial);
-          System.out.println("Read from InitPassword "+passwd);
+           System.out.println("Read from InitPassword "+passwd);
           bufferedReader.close();
           return;
         }
         catch (FileNotFoundException ie) { ie.printStackTrace();}  // no saved state
         catch (IOException io) { io.printStackTrace();}            // problem during read
-        //catch (NumberFormatException ignored) { }  // corrupt saved state
-      
+
         // No luck with the saved state, check for an init parameter
         if (null==passwd && passwd.equals("")){
-        	System.out.println("Here 4");
         	passwd = getInitParameter ("password");
         	System.out.println("Read from getInitParameter "+passwd);
         }
-        
-        /*try {
-          //count = Integer.parseInt(initial);
-        	passwd = pas;
-          return;
-        }
-        catch (NumberFormatException ignored) { }  // null or non-integer value
-		
-        // Default to an initial count of "0"
-        count = 0;
-        */
+
     }
     
 	/**
@@ -95,7 +78,7 @@ public class ProcessLogin extends HttpServlet {
 		RequestDispatcher rd=request.getRequestDispatcher(responsePage);;
 		
 		request.getRequestDispatcher("displayData.jsp");
-	    	int age=0;
+
 		 	String name=request.getParameter("username");  
 		    String pwd=request.getParameter("password"); 
 	    
@@ -106,14 +89,10 @@ public class ProcessLogin extends HttpServlet {
 		    	System.out.println("Login pressed");	
 		    	System.out.println("Password should be :"+passwd); 
 		    
-			    if(request.getParameter("age")!=null && Pattern.matches("[^a-zA-Z\\s+]+", request.getParameter("age"))){
-			    	 age=Integer.parseInt(request.getParameter("age"));
-			    }		    
-			          
+			       
 			    if(pwd.equals(passwd)){ 
 			    	responsePage="success.jsp";
-			    	request.setAttribute("dname", name);
-			    	request.setAttribute("dage", age);
+			    	request.setAttribute("dname", name);			    	
 			    	rd=request.getRequestDispatcher(responsePage);;
 			        rd.include(request, response); 
 	
@@ -140,37 +119,27 @@ public class ProcessLogin extends HttpServlet {
 			        out.println("<form action='ProcessLogin' method='post'>");
 			        out.println("<center><table border='0' width='70%' cellpadding='1'>");  
 			        out.println("<tr><td><h2>Please enter new password below -</h2></td></tr>");  
-			        //out.println("<P><input type='text' name='password'"/> "); 
 			        out.println("<tbody><tr><td><input type='text' name='passwod'></td></tr><br/>");
-			        //out.println("<P>Courtesy of HelloServlet.java 1.2 "); 
-			        //out.println("<input type='submit' name='submit'><br />");
 			        out.println("<tr><td><input type='submit' name='action' value='Change'></td></tr></tbody></table></center>");
 			        out.println("</form></body></html>"); 
 			        } finally {
 			            out.close();  // Always close the output writer
 			        }
 		    	
-			        //String change = request.getParameter("action");
-			        
-			       
 		    	} else if("Change".equals(action)){
 		    		
 		    		System.out.println("Inside Change ");
 		    		 if (null!=request.getParameter("passwod")){
 					    	try {
-					    		System.out.println("Here 5");
 					    	      FileWriter fileWriter = new FileWriter("InitPassword.password");
 					    	      String paswd = request.getParameter("passwod");
 					    	      passwd = paswd;
-					    	      System.out.println("Entered passwd :"+paswd);
 					    	      fileWriter.write(paswd);
 					    	      fileWriter.close();
-					    	      System.out.println("Reset password to "+paswd);
-					    	      //return;					    	      
+					    	      System.out.println("Reset password to "+paswd +"successful.");
 					    	    }
 					    	    catch (IOException e) { 
 					    	    	e.printStackTrace();// problem during write
-					    	      // Log the exception. See Chapter 5, "Sending HTML Information".
 					    	    }
 				        } 
 		    		 
@@ -185,11 +154,6 @@ public class ProcessLogin extends HttpServlet {
 				        out.println("<H1>Password changed successfully!</H1>");
 				        out.println("<a href='index.jsp'>Login page</a>");				        
 				        
-				         //out.println("<P><input type='text' name='password'"/> "); 
-				        //out.println("<input type='text' name='passwod'><br />");
-				        //out.println("<P>Courtesy of HelloServlet.java 1.2 ");
-				        //out.println("<input type='submit' name='submit'><br />");
-				        //out.println("<input type='submit' name='action' value='Login'><br />");
 				        out.println("</body></form></body></html>"); 
 				        } finally {
 				            out.close();  // Always close the output writer
@@ -197,7 +161,7 @@ public class ProcessLogin extends HttpServlet {
 		    	}
 		    	
 		    }
-	}
+	} 
 	
 	public long multiply(int a,int b){
 		return a*b;

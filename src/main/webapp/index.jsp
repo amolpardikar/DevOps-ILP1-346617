@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Example</title>
+        <title>DevOps Example</title>
     </head>
     <body bgcolor="silver">
         <form action="ProcessLogin" method="post"> 
@@ -29,6 +29,12 @@
                     </tr>
                     <tr>
                         <td colspan="2">New User <a href="register.jsp">Register Here</a></td>
+                    </tr>
+                    <tr>
+                    	<br/>
+                    	<br/>
+                    	<br/>
+                        <td colspan="2"><p><font size="2" color="blue">Default password is test, change Reset to change it!</font></p></td>
                     </tr>
                 </tbody>
             </table>
