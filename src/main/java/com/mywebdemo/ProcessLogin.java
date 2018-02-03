@@ -154,7 +154,7 @@ public class ProcessLogin extends HttpServlet {
 				        out.println("<H1>Password changed successfully!</H1>");
 				        out.println("<a href='index.jsp'>Login page</a>");				        
 				        
-				        out.println("</body></form></body></html>"); 
+				        out.println("</body></form></body></html>");
 				        } finally {
 				            out.close();  // Always close the output writer
 				        }
