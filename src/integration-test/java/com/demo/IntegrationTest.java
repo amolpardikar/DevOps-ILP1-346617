@@ -15,10 +15,6 @@
  */
 package com.demo;
 
-/**
- * @author - avinash.patel@wipro.com
- * Date : Mar 13, 2017
- */
 public interface IntegrationTest {
 
 }
